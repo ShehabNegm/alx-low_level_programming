@@ -19,7 +19,7 @@ int main(void)
 			{
 				for (d = 0; d < 10; d++)
 				{
-					if (((i + b) < (b + c)) && ((i + b + c + d) != 35))
+					if ((i + b) < (b + c))
 					{
 						putchar((i) + '0');
 						putchar((b) + '0');
@@ -29,9 +29,9 @@ int main(void)
 						putchar(',');
 						putchar(' ');
 					}
-					else
+					else if ((i + b + c + d) == 35)
 					{
-					putchar('\n');
+						putchar('\n');
 					}
 				}
 			}
