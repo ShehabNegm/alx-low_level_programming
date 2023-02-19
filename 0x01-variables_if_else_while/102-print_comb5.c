@@ -1,42 +1,37 @@
 #include <stdio.h>
 /**
   * main - function main
-  * Description: print all smallest of 4 digits combination
-  * Return: function will return smallest combination of 4 digits
+  * Description: print all smallest of 2 2 digits number combination
+  * Return: function will return smallest combination of 2 digits 2 number
   */
 int main(void)
 {
 	int i = 0;
 	int b;
-	int c;
-	int d;
 
-	while (i < 10)
+	while (i < 99)
 	{
-		for (b = 0; b < 10; b++)
+		for (b = 0; b <= 99; b++)
 		{
-			for (c = 0; c < 10; c++)
+			if (i < b)
 			{
-				for (d = 0; d < 10; d++)
+				putchar((i / 10) + '0');
+				putchar((i % 10) + '0');
+				putchar(' ');
+				putchar((b / 10) + '0');
+				putchar((b % 10) + '0');
+				if (i != 98)
 				{
-					if ((i + b) < (b + c))
-					{
-						putchar((i) + '0');
-						putchar((b) + '0');
-						putchar(' ');
-						putchar((c) + '0');
-						putchar((d) + '0');
-						putchar(',');
-						putchar(' ');
-					}
-					else if ((i + b + c + d) == 35)
-					{
-						putchar('\n');
-					}
+					putchar(',');
+					putchar(' ');
+				}
+				else
+				{
+					putchar('\n');
 				}
 			}
 		}
-	++i;
+		++i
 	}
 	return (0);
 }
