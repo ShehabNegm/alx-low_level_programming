@@ -31,7 +31,7 @@ int main(void)
 				}
 			}
 		}
-		++i
+		++i;
 	}
 	return (0);
 }
