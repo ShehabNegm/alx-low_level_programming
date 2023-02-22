@@ -30,6 +30,7 @@ void times_table(void)
 		}
 		if ((a * 9) < 10)
 		{
+			_putchar(' ');
 			_putchar((a * 9) + '0');
 			_putchar('\n');
 		}
