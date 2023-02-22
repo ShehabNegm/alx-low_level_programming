@@ -15,6 +15,6 @@ void print_to_98(int n)
 			printf("%d, ", fn);
 	else
 		for (fn = n; fn < 98; ++fn)
-			printf("%d; ", fn);
+			printf("%d, ", fn);
 	printf("98\n");
 }
