@@ -25,6 +25,7 @@ int main(void)
 		}
 		i++;
 	}
-	return (lfct);
+	printf("%ld\n", lfct);
+	return(1);
 }
 
