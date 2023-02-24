@@ -33,8 +33,8 @@ void print_number(int i)
 	else if (i >= 1000 && i <= 9999)
 	{
 		_putchar((i / 1000) + '0');
-		_putchar((i / 100) + '0');
-		_putchar((i / 1000) + '0');
+		_putchar((i / 1100) + '0');
+		_putchar((i / 10 % 10) + '0');
 		_putchar((i % 10) + '0');
 	}
 }
