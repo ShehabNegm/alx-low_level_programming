@@ -26,6 +26,6 @@ int main(void)
 		i++;
 	}
 	printf("%ld\n", lfct);
-	return (1);
+	return (0);
 }
 
