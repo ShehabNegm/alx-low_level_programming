@@ -12,7 +12,7 @@ int main(void)
 	long int fct; /*factor*/
 	long int lfct = 0; /*largest factor*/
 
-	while (i < n)
+	while (i <= n)
 	{
 		while (n % i == 0)
 		{
