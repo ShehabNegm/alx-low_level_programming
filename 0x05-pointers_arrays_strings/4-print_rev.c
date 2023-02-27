@@ -21,7 +21,7 @@ void print_rev(char *c)
 		tmp++;
 	}
 
-	for (i = len; i >= 0; i--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(*(c + i));
 	}
