@@ -20,7 +20,11 @@ char *cap_string(char *str)
 			if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
 				str[i + 1] = str[i + 1] - 32;
 		}
+		else if (str[i] == 63 || str[i] == 123 || str[i] == 125)
+		{
+			if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
+				str[i + 1] = str[i + 1] - 32;
+		}
 	}
 	return (str);
-
 }
