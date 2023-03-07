@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * print_diagsums - will print chess board on shell
+  * print_chessboard - will print chess board on shell
   * @a : input array
   *
   * Return: void
