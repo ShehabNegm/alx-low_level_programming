@@ -11,7 +11,7 @@
 char *_strpbrk(char *s, char *accept)
 {
 	int i;
-	int f;
+	int f = 0;
 
 	while (*s != '\0')
 	{
