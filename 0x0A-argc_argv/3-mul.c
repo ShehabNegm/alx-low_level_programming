@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
 	int multi;
 
-	if (argc == 1 || argc > 2)
+	if (argc == 1 || argc > 3)
 	{
 		printf("Error\n");
 		return (1);
