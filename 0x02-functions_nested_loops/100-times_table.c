@@ -1,12 +1,9 @@
 #include "main.h"
-
 /**
   * print_times_table - will print table of n times
   * @num : numer int
-  *
   * Return: will return table of n times table
   */
-
 void print_times_table(int num)
 {
 	int i;
@@ -34,7 +31,6 @@ void print_times_table(int num)
 					_putchar((i * j / 10) + '0');
 					_putchar((i * j % 10) + '0');
 				}
-
 				if (i * j >= 100)
 				{
 					_putchar(' ');
