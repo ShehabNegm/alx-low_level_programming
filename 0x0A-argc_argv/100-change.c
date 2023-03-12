@@ -9,6 +9,7 @@
 int main(int argc, char *argv[])
 {
 	int chng = 0;
+	int p = atoi(argv[1]);
 
 	if (argc != 2)
 	{
@@ -17,8 +18,6 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		int p = atoi(argv[1]);
-
 		while (p > 1)
 		{
 			if (p >= 25)
