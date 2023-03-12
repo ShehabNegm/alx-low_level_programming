@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
 	int chng = 0;
-	int p = atoi(argv[1]);
+	int p = atoi(argv[argc - 1]);
 
 	if (argc != 2)
 	{
