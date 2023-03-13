@@ -16,37 +16,36 @@ char *str_concat(char *s1, char *s2)
 
 	if (s1 == NULL)
 	{
-		s1 = " ";
+		s1 = "";
 	}
-	else if (s2 == NULL)
+	if (s2 == NULL)
 	{
-		s2 = " ";
+		s2 = "";
+	}
+
+	for (i = 0; s1[i] != '\0'; ++i)
+		;
+
+	for (j = 0; s2[j] != '\0'; ++j)
+		;
+
+	p = (char *) malloc(i + j + 1);
+
+	if (p == NULL)
+	{
+		return (NULL);
 	}
 	else
 	{
-		for (i = 0; s1[i] != '\0'; ++i)
-			;
-		for (j = 0; s2[j] != '\0'; ++j)
-			;
-
-		p = (char *) malloc(i + j + 1);
-
-		if (p == NULL)
+		for (k = 0; k < i; ++k)
 		{
-			return (NULL);
+			p[k] = s1[k];
 		}
-		else
+		for (k = 0; k < j; ++k)
 		{
-			for (k = 0; k < i; ++k)
-			{
-				p[k] = s1[k];
-			}
-			for (k = 0; k < j; ++k)
-			{
-				p[i + k] = s2[k];
-			}
-			p[i + j] = '\0';
+			p[i + k] = s2[k];
 		}
+		p[i + j] = '\0';
 	}
 	return (p);
 }
