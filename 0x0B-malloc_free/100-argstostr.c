@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
-  * argstostr - free memorry of 2d array
+  * argstostr - put arguments of shell into string
   * @ac : input int number of arguments
   * @av : input array of strings
   * Return: will return pointer to new string
@@ -10,7 +10,7 @@
 char *argstostr(int ac, char **av)
 {
 	int i;
-	int charc = 0; /*count char inside argv*/
+	int charc = 0; /*count char inside av*/
 	char *p;
 	int j;
 	int k;
