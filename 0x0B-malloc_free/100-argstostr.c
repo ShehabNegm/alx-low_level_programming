@@ -26,11 +26,11 @@ char *argstostr(int ac, char **av)
 		}
 
 	}
-	p = malloc((charc + ac) * sizeof(char));
-	
+	p = malloc((charc + ac + 1) * sizeof(char));
+
 	if (p == NULL)
 	{
-		free (p);
+		free(p);
 		return (NULL);
 	}
 	k = 0;
