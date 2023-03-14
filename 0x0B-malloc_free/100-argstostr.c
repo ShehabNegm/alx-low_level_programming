@@ -13,6 +13,7 @@ char *argstostr(int ac, char **av)
 	int charc = 0; /*count char inside argv*/
 	char *p;
 	int j;
+	int k;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
@@ -25,40 +26,26 @@ char *argstostr(int ac, char **av)
 		}
 
 	}
-	p = malloc(charc + ac);
+	p = malloc((charc + ac) * sizeof(char));
 	
 	if (p == NULL)
 	{
 		free (p);
 		return (NULL);
 	}
+	k = 0;
 
 	for (j = 0; j < ac; j++)
 	{
 		for (i = 0; av[j][i] != '\0'; i++)
 		{
-			*p = av[j][i];
-			p++;
+			p[k] = av[j][i];
+			k++;
 		}
-		*p = '\0';
-		p++;
-		*p = '\n';
-		p++;
+		p[k] = '\n';
+		k++;
+
 	}
+	p[k] = '\0';
 	return (p);
 }
-
-/**
-  * main - main function
-  * @argc : input int number of arguments
-  * @argv : input array of string
-  * Return: will return 0 or 1
-  *
-  
-
-int main(int argc, char *argv[])
-{
-
-	argstostr(argc, argv);
-	return (0);
-}*/
