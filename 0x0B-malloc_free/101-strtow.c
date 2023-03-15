@@ -38,7 +38,7 @@ char **strtow(char *str)
 
 	for (i = 0; i < wc; i++)
 	{
-		p[i] = malloc((strlen *sizeof(char)));
+		p[i] = malloc((strlen + 1 *sizeof(char)));
 		if (p[i] == NULL)
 		{
 			return (NULL);
