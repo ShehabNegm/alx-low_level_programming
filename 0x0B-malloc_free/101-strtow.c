@@ -32,7 +32,7 @@ char **strtow(char *str)
 		i++;
 	}
 
-	p = malloc((wc * strlen) * sizeof(char)); /*allocated memory for words and NULL last element*/
+	p = malloc((wc + 1) * sizeof(char *)); /*allocated memory for words and NULL last element*/
 	if (p == NULL)
 		return (NULL);
 
