@@ -20,11 +20,11 @@ char **strtow(char *str)
 
 	while (str[i] != '\0')
 	{
-		while (isspace(str[i]) == 0 && isspace(str[i + 1]) == 0)
+		while (isspace(str[i]) == 0)
 		{
 			strlen++;
 			i++;
-			if (isspace(str[i]) == 0 && isspace(str[i + 1]) != 0 )
+			if (isspace(str[i]) != 0 )
 			{
 				wc++;
 			}
@@ -32,13 +32,13 @@ char **strtow(char *str)
 		i++;
 	}
 
-	p = (char **) malloc((wc + 1) * sizeof(char)); /*allocated memory for words and NULL last element*/
+	p = malloc((wc * strlen) * sizeof(char)); /*allocated memory for words and NULL last element*/
 	if (p == NULL)
 		return (NULL);
 
-	for (i = 0; i < wc; i++)
+	for (i = 0; i < wc + 1; i++)
 	{
-		p[i] = (char *) malloc((strlen + 1 *sizeof(char)));
+		p[i] = malloc((strlen + 1 + wc) * sizeof(char));
 		if (p[i] == NULL)
 			return (NULL);
 	}
@@ -55,7 +55,7 @@ char **strtow(char *str)
 				p[k][j] = str[i];
 				j++;
 				i++;
-				if (isspace(str[i - 1]) == 0 && isspace(str[i]) != 0 )
+				if (isspace(str[i]) != 0 )
 				{
 					p[k][j] = '\0';
 					k++;
