@@ -45,9 +45,9 @@ char **strtow(char *str)
 	k = 0;
 	i = 0;
 
-	while (str[i] != '\0')
+	while (k < wc)
 	{
-		for (k = 0; k < wc; k++)
+		while (str[i] != '\0')
 		{
 			j = 0;
 			while (isspace(str[i]) == 0)
@@ -55,13 +55,14 @@ char **strtow(char *str)
 				p[k][j] = str[i];
 				j++;
 				i++;
+				if (isspace(str[i - 1]) == 0 && isspace(str[i]) != 0 )
+				{
+					p[k][j] = '\0';
+					k++;
+				}
 			}
-			if (isspace(str[i]) == 0 && isspace(str[i + 1]) != 0 )
-			{
-				p[k][j] = '\0';
-			}
+			i++;
 		}
-		i++;
 	}
 	p[k] = NULL;
 	return (p);
