@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
   * _realloc - reallocation of memory allocated with new size
@@ -38,6 +39,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	p = malloc(new_size);
 	if (p == NULL)
 		return (NULL);
+	memcpy(p, ptr, old_size);
 	free(ptr);
 	return (p);
 }
