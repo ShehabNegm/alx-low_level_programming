@@ -11,10 +11,10 @@
 
 int main(int argc, char *argv[])
 {
-	unsigned long int multi;
+	unsigned long multi;
 	int i, j;
 
-	if (argc <= 2)
+	if (argc != 3)
 	{
 		printf("Error\n");
 		exit(98);
@@ -23,14 +23,14 @@ int main(int argc, char *argv[])
 	{
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
+			if (argv[i][j] < 0 || argv[i][j] > 9)
 			{
 				printf("Error\n");
 				exit(98);
 			}
 		}
 	}
-	multi = atoi(argv[1]) * atoi(argv[2]);
+	multi = atol(argv[1]) * atol(argv[2]);
 	printf("%lu\n", multi);
 	return (0);
 }
