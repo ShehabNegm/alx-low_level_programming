@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-	multi = atol(argv[1]) * atol(argv[2]);
+	multi = atoll(argv[1]) * atoll(argv[2]);
 	printf("%lu\n", multi);
 	return (0);
 }
