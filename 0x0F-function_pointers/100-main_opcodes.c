@@ -5,10 +5,10 @@
   * main - will print opcodes
   * @argc: number of input arguments
   * @argv: arguments pointers to strings
-  *
+  * Return: 0
   */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int i = 0;
 	char *p = (char *)main;
@@ -21,7 +21,7 @@ int main (int argc, char *argv[])
 	}
 
 	bt = atoi(argv[1]);
-	
+
 	if (bt < 0)
 	{
 		printf("Error\n");
