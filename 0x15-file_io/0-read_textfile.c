@@ -12,7 +12,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t sz, wr;
 	char *c = calloc(letters, sizeof(char));
 
-	if (!filename)
+	if (!*filename)
 		return (0);
 
 	fd = open(filename, O_RDONLY);
@@ -22,9 +22,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	sz = read(fd, c, letters);
 	if (sz < 0)
 		return (0);
-	wr = write(STDOUT_FILENO, c, letters);
-	if (wr < 0)
+	wr = write(STDOUT_FILENO, c, sz);
+	if (wr < 0 || wr != sz)
 		return (0);
-	return (sz);
+	return (wr);
 }
-
