@@ -34,13 +34,14 @@ int main(int argc, char *argv[])
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		free(buffer);
+		close(fd2)
 		exit(99);
 	}
 	c1 = close(fd);
 	c2 = close(fd2);
 	if (c1 < 0 || c2 < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", c1 > c2);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", c1 > c2 ? c2 : c1);
 		exit(100);
 	}
 	free(buffer);
