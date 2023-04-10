@@ -37,20 +37,22 @@ int main(int argc, char *argv[])
 	buffer = malloc(1024 * sizeof(char));
 
 	fd = open(argv[1], O_RDONLY);
-	rd = read(fd, buffer, 1024);
-	if (fd < 0 || argv[1] == NULL || rd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
-		exit(98);
-	}
 	cr = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	wr = write(cr, buffer, rd);
-	if (cr < 0 || wr < 0 || buffer == NULL || cr < 0)
+	while ((rd = read(fd, buffer, 1024)) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		free(buffer);
-		exit(99);
+		if (fd < 0 || argv[1] == NULL || rd == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			free(buffer);
+			exit(98);
+		}
+		wr = write(cr, buffer, rd);
+		if (cr < 0 || wr < 0 || buffer == NULL || cr < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			free(buffer);
+			exit(99);
+		}
 	}
 	close_fd(fd);
 	close_fd(cr);
