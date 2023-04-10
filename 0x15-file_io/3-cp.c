@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	int cr, fd, rd, c1, c2;
+	int cr, fd, fd2, rd, c1, c2, cm;
 	ssize_t wr;
 	char *buffer;
 
@@ -30,18 +30,22 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	cr = open(argv[2], O_RDWR | O_CREAT, 0664);
-	wr = write(cr, buffer, 1024);
-	if (cr < 0 || wr < 0)
+	cr = creat(argv[2], 0664);
+	cm = fchmod(cr, 0664);
+	fd2 = open(argv[2], O_WRONLY);
+	wr = write(cr, buffer, rd);
+	if (cr < 0 || wr < 0 || fd2 < 0 || cm < 0)
 	{
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
+		free(buffer);
 		exit(99);
 	}
 	c1 = close(fd);
-	c2 = close(cr);
+	c2 = close(fd2);
 	if (c1 < 0)
 		dprintf(2, "Error: Can't close fd %d", fd);
 	if (c2 < 0)
-		dprintf(2, "Error: Can't close fd %d", fd);
+		dprintf(2, "Error: Can't close fd %d", fd2);
+	free(buffer);
 	return (0);
 }
