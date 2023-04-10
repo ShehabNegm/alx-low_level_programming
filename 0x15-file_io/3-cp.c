@@ -11,25 +11,21 @@ int main(int argc, char *argv[])
 {
 	int cr, fd, fd2, rd, c1, c2, cm;
 	ssize_t wr;
-	char *buffer;
+	char *buffer = malloc(1024 * sizeof(char));
 
 	if (argc != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 	fd = open(argv[1], O_RDONLY);
-	buffer = malloc(1024 * sizeof(char));
 	rd = read(fd, buffer, 1024);
-
 	if (fd < 0 || argv[1] == NULL || rd < 0)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		free(buffer);
 		exit(98);
 	}
-
 	cr = creat(argv[2], 0664);
 	cm = fchmod(cr, 0664);
 	fd2 = open(argv[2], O_WRONLY);
@@ -42,10 +38,11 @@ int main(int argc, char *argv[])
 	}
 	c1 = close(fd);
 	c2 = close(fd2);
-	if (c1 < 0)
-		dprintf(2, "Error: Can't close fd %d", fd);
-	if (c2 < 0)
-		dprintf(2, "Error: Can't close fd %d", fd2);
+	if (c1 < 0 || c2 < 0)
+	{
+		dprintf(2, "Error: Can't close fd %d", c1 > c2);
+		exit(100);
+	}
 	free(buffer);
 	return (0);
 }
