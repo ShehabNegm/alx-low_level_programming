@@ -1,6 +1,23 @@
 #include "main.h"
 
 /**
+  * close_fd - will close a file and return error handling message
+  * @fd: file descriptor
+  */
+
+void close_fd(int fd)
+{
+	int i = close(fd);
+
+	if (i < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+}
+
+
+/**
   * main - function main as entry point
   * @argc : number of arguments
   * @argv : arguments array
@@ -9,7 +26,7 @@
 
 int main(int argc, char *argv[])
 {
-	int cr, fd, rd, c1, c2, wr;
+	int cr, fd, rd, wr;
 	char *buffer;
 
 	if (argc != 3)
@@ -35,13 +52,8 @@ int main(int argc, char *argv[])
 		free(buffer);
 		exit(99);
 	}
-	c1 = close(fd);
-	c2 = close(cr);
-	if (c1 < 0 || c2 < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", c1 > c2 ? cr : fd);
-		exit(100);
-	}
+	close_fd(fd);
+	close_fd(cr);
 	free(buffer);
 	return (0);
 }
