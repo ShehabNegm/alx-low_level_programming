@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	cr = creat(argv[2], 0664);
 	cm = fchmod(cr, 0664);
 	fd2 = open(argv[2], O_WRONLY);
-	wr = write(cr, buffer, rd);
+	wr = write(fd2, buffer, rd);
 	if (cr < 0 || wr < 0 || fd2 < 0 || cm < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
