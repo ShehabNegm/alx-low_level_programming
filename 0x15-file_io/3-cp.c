@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	int cr, fd, fd2, rd, c1, c2, cm;
+	int cr, fd, rd, c1, c2;
 	ssize_t wr;
 	char *buffer = malloc(1024 * sizeof(char));
 
@@ -26,22 +26,19 @@ int main(int argc, char *argv[])
 		free(buffer);
 		exit(98);
 	}
-	cr = creat(argv[2], 0664);
-	cm = fchmod(cr, 0664);
-	fd2 = open(argv[2], O_WRONLY || O_TRUNC);
-	wr = write(fd2, buffer, rd);
-	if (cr < 0 || wr < 0 || fd2 < 0 || cm < 0)
+	cr = open(argv[2], O_CREAT || O_WRONLY || O_TRUNC, 0664);
+	wr = write(cr, buffer, rd);
+	if (cr < 0 || wr < 0 || buffer == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		free(buffer);
-		close(fd2);
 		exit(99);
 	}
 	c1 = close(fd);
-	c2 = close(fd2);
+	c2 = close(cr);
 	if (c1 < 0 || c2 < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", c1 > c2 ? c2 : c1);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", c1 > c2 ? cr : fd);
 		exit(100);
 	}
 	free(buffer);
