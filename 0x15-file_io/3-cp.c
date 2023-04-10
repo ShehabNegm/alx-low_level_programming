@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		free(buffer);
-		close(fd2)
+		close(fd2);
 		exit(99);
 	}
 	c1 = close(fd);
