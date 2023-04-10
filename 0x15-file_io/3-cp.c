@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	c2 = close(fd2);
 	if (c1 < 0 || c2 < 0)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", c1 > c2);
+		dprintf(2, "Error: Can't close fd %d", c1 > c2);
 		exit(100);
 	}
 	free(buffer);
