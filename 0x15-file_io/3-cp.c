@@ -13,9 +13,6 @@ int main(int argc, char *argv[])
 	ssize_t wr;
 	char *buffer = malloc(1024 * sizeof(char));
 
-	if (buffer == NULL)
-		return (0);
-
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
@@ -31,7 +28,7 @@ int main(int argc, char *argv[])
 	}
 	cr = creat(argv[2], 0664);
 	cm = fchmod(cr, 0664);
-	fd2 = open(argv[2], O_WRONLY);
+	fd2 = open(argv[2], O_WRONLY || O_TRUNC);
 	wr = write(fd2, buffer, rd);
 	if (cr < 0 || wr < 0 || fd2 < 0 || cm < 0)
 	{
