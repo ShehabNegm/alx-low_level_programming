@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
-  * dlistint_len - function to return length of d linked list
+  * len - function to return length of d linked list
   * @h: header of the doubly linked list
   * Return: will return length of the list
   */
